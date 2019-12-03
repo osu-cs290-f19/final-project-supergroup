@@ -1,0 +1,28 @@
+{
+  "name": "final-project-supergroup",
+  "version": "1.0.0",
+  "description": "Final project for web dev with Peter, Logan, Chase, and Nathan",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-cs290-f19/final-project-supergroup.git"
+  },
+  "keywords": [
+    "final-project"
+  ],
+  "author": "Logan Shuler, Peter Bloch, Chase Kozol, Nathan Hausman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osu-cs290-f19/final-project-supergroup/issues"
+  },
+  "homepage": "https://github.com/osu-cs290-f19/final-project-supergroup#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handlebars": "^4.5.3"
+  }
+}
