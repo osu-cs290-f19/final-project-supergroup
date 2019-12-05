@@ -11,29 +11,29 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.runtime.js" integrity="sha256-jnhayWnGXA4I5H5WaxN9/tAKSe8/wHsiLfwE1hmVJys=" crossorigin="anonymous" defer></script>
 		<script src="/functionHandler.js" charset="utf-8" defer></script>
 	</head>
-    <body>
+    <body>	
         <header>
             <div class="header-image-container">
-                <img src="/beaver-clipart.png" alt="Beaver Logo">
+                <img src="./beaver-clipart.png" alt="Beaver Logo">
             </div>
-
-            <h1 class="site-title"><a href="/">Beaver Cram!</a></h1>
+	    <h1 class="site-title"><a href="/">BeaverCram!</a></h1>
+	    <nav id="navbar">
+	    <div>
+		<a href="./index.html">Home</a>
+            </div>
+            <div>
+                <a href="./Browse.html">Browse</a>
+	    </div>
+            <div>
+                <a href="./upload.html">Upload</a>
+            </div>
+            <div>
+                <a href="./about.html">About</a>
+            </div>
+            </nav> 
         </header>
-        <nav>
-            <div>
-                <a href="/about">About Us</a>
-            </div>
-            <div>
-                <a href="/browse">Browse Materials</a>
-            <div>
-                <a href="/upload">Upload</a>
-            </div>
-        </nav>
 		
-		
-        {{{body}}}
-		
-		
+        {{{body}}
+        
     </body>
-
 </html>

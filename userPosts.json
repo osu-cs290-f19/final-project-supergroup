@@ -3,8 +3,10 @@
 		"postNum": 0,
 		"title" : "Assignment 5",
 		"class": "Web Development",
+		"term": "Fall",
 		"uploadDate": "11/30/19",
 		"professor": "Rob Hess",
-		"body": "This is a test of the feature"
+		"body": "This is a test of the feature",
+		"resource": "/"
 	}
 ]
