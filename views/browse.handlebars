@@ -1,0 +1,13 @@
+<main class = "content">
+
+	{{#if showsearch}}
+		{{> searchBar}}
+	
+	{{/if}}
+	
+	<div class = "postContainer">
+		{{#each post}}
+			{{> userPost showbody=false}}
+		{{/each}}
+	</div>
+</main>
