@@ -13,3 +13,14 @@ body {
 }
 
 
+#fullSearch {
+	background-color: pink;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#advancedSearch {
+	display: flex;
+	flex-direction: row;
+}
