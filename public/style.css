@@ -1,0 +1,15 @@
+body {
+	
+}
+
+#navbar {
+	background-color: #000000;
+	color: #dc4405;
+}
+
+#navbar li:hover {
+	background-color: #dc4405;
+	color: #000000;
+}
+
+
