@@ -124,6 +124,10 @@ header {
 	margin: 5px;
 }
 
+.user-post {
+	padding: 10px;
+}
+
 #search-button, #search-link {
 	width: 40%;
 	margin: 2% auto;
