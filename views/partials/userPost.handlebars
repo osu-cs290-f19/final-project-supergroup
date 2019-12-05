@@ -1,9 +1,11 @@
 <div class="user-post" data-class="{{class}}" data-upload-date="{{uploadDate}}" data-term="{{term}}" data-professor="{{professor}}" data-post-number="{{postNum}}">
 	<div class="post-contents">
 		<h3 class="post-title"><a href="posts/{{postNum}}">{{title}}</a></h3>
-		<h5 class="post-class">Class: {{class}}</h5>
-		<h5 class="post-professor">Professor: {{professor}}</h5>
-		<h5 class="post-upload-date">Upload date: {{uploadDate}}</h5>
+		<div class = "post-contents-info">
+			<h5 class="post-info">Class: {{class}}</h5>
+			<h5 class="post-info">Professor: {{professor}}</h5>
+			<h5 class="post-info">Upload date: {{uploadDate}}</h5>
+		</div>
 		{{#if showbody}}
 		<div class="post-body">
 			<p class="post-body-contents">{{body}}</p>

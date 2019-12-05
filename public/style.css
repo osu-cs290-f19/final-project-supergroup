@@ -61,10 +61,19 @@ header {
 	padding-top: 15em;	
 }
 
+.search-bar-buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 50px;
+}
+
 .search-bar {
 	width: 30%;
 	margin: auto;
 	margin: auto;
+	display: flex;
+	flex-direction: column;
 }
 
 #search-bar-text {
@@ -79,11 +88,40 @@ header {
 .full-search {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	min-height: 100px;
+	padding: 10px;
+	background-color: #9e9e9e;
 }
 
 .advanced-search {
 	display: flex;
 	flex-direction: row;
+}
+
+.search-container {
+	margin: 5px;
+}
+
+.post-contents {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.post-contents-info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.post-body {
+	display: flex;
+	flex-direction: column;
+}
+
+.post-info {
+	margin: 5px;
 }
 
 #search-button, #search-link {
