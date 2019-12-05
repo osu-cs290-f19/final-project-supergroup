@@ -1,40 +1,39 @@
 <main class = "content">
 	<div class = "browse-contents">
 
+<<<<<<< HEAD
 		{{#if showsearch}}
-			<div class = "full-search">
-				{{> searchBar}}
-				<div class = "advanced-search">
-					<div class = "search-container">
-						<label for = "class-search" class = "search-label">Class</label>
-						<input type = "text" name = "class-search" id = "class-search">
-					</div>
-					<div class = "search-container">
-						<label for = "professor-search" class = "search-label">Professor</label>
-						<input type = "text" name = "professor-search" id = "professor-search">
-					</div>
-					<div class = "search-container">
-						<label for = "date-search-before" class = "search-label">Uploaded before</label>
-						<div id = "date-search-before" class = "date-inputs">
-							<input type = "text" name = "date-search-before-m" id = "date-search-before-m" placeholder = "MM">
-							<input type = "text" name = "date-search-before-d" id = "date-search-before-d" placeholder = "DD">
-							<input type = "text" name = "date-search-before-y" id = "date-search-before-y" placeholder = "YY">
-						</div>
-					</div>
-					<div class = "search-container">
-						<label for = "date-search-after" class = "search-label">Uploaded after</label>
-						<div id = "date-search-after" class = "date-inputs">
-							<input type = "text" name = "date-search-after-m" id = "date-search-after-m" placeholder = "MM">
-							<input type = "text" name = "date-search-after-d" id = "date-search-after-d" placeholder = "DD">
-							<input type = "text" name = "date-search-after-y" id = "date-search-after-y" placeholder = "YY">
-						</div>
-					</div>
+		<div class = "full-search">
+			{{> searchBar}}
+			<div class = "advanced-search">
+				<div class = "search-container">
+					<label for = "class-search" class = "search-label">Class</label>
+					<input type = "text" name = "class-search" id = "class-search">
+				</div>
+				<div class = "search-container">
+					<label for = "professor-search" class = "search-label">Professor</label>
+					<input type = "text" name = "professor-search" id = "professor-search">
+				</div>
+				<div class="search-container">
+					<label for="select-term" class="search-label">Term</label>
+					<select id="select-term">
+						<option value="" selected>Select term</option>
+				<option>Fall</option>
+				<option>Winter</option>
+				<option>Spring</option>
+				<option>Summer</option>
+					</select>
+				</div>
+				<div class="search-container">
+					<label for="year-input" class="search-label">Term</label>
+					<input type="text" id="year-input">
 				</div>
 			</div>
-		
+		</div>
+			
 		{{/if}}
 		
-		<div class = "postContainer">
+		<div class = "post-container">
 			{{#each post}}
 				{{> userPost showbody=false}}
 			{{/each}}
