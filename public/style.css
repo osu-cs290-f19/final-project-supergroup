@@ -57,10 +57,13 @@ header {
 	text-decoration: none;
 }
 
+.main-search {
+	padding-top: 15em;	
+}
+
 .search-bar {
 	width: 30%;
 	margin: auto;
-	padding-top: 15em;
 	margin: auto;
 }
 
@@ -68,14 +71,17 @@ header {
 	width: 100%;
 }
 
-#fullSearch {
-	background-color: pink;
+.browse-contents {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 
-#advancedSearch {
+.full-search {
+	display: flex;
+	flex-direction: column;
+}
+
+.advanced-search {
 	display: flex;
 	flex-direction: row;
 }
