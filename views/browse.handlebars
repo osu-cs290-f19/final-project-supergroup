@@ -1,0 +1,41 @@
+<main class = "content">
+
+	{{#if showsearch}}
+		<div class = "fullSearch">
+			{{> searchBar}}
+			<div class = "advancedSearch">
+				<div class = "searchContainer">
+					<label for = "classSearch" class = "searchLabel">Class</label>
+					<input type = "text" name = "classSearch" id = "classSearch">
+				</div>
+				<div class = "searchContainer">
+					<label for = "professorSearch" class = "searchLabel">Professor</label>
+					<input type = "text" name = "professorSearch" id = "professorSearch">
+				</div>
+				<div class = "searchContainer">
+					<label for = "dateSearchBefore" class = "searchLabel">Uploaded before</label>
+					<div id = "dateSearchBefore" class = "dateInputs">
+						<input type = "text" name = "dateSearchBeforeM" id = "dateSearchBeforeM" placeholder = "MM">
+						<input type = "text" name = "dateSearchBeforeD" id = "dateSearchBeforeD" placeholder = "DD">
+						<input type = "text" name = "dateSearchBeforeY" id = "dateSearchBeforeY" placeholder = "YY">
+					</div>
+				</div>
+				<div class = "searchContainer">
+					<label for = "dateSearchAfter" class = "searchLabel">Uploaded after</label>
+					<div id = "dateSearchAfter" class = "dateInputs">
+						<input type = "text" name = "dateSearchBeforeM" id = "dateSearchBeforeM" placeholder = "MM">
+						<input type = "text" name = "dateSearchBeforeD" id = "dateSearchBeforeD" placeholder = "DD">
+						<input type = "text" name = "dateSearchBeforeY" id = "dateSearchBeforeY" placeholder = "YY">
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	{{/if}}
+	
+	<div class = "postContainer">
+		{{#each post}}
+			{{> userPost showbody=false}}
+		{{/each}}
+	</div>
+</main>
