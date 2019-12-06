@@ -8,12 +8,11 @@ function create_posts(){
 }
 
 function checkFilters(post, filters){
-    //check title and body
+    //check title
     if (filters.text){
         var post_title = post.title.toLowerCase();
-        var post_body = post.body.toLowerCase();
         var filter_text = filters.text.toLowerCase();
-        if (post_title.indexOf(filter_text)<0 && post_body.indexOf(filter_text)<0){
+        if (post_title.indexOf(filter_text)<0){
             return false;
         }
     }
@@ -75,7 +74,6 @@ function updatePosts(event){
         professor: post_info[i].getAttribute('data-professor'),
         class: post_info[i].getAttribute('data-class'),
         term: post_info[i].getAttribute('data-term'),
-        body: post_info[i].getAttribute('data-body'),
         title: post_info[i].getAttribute('data-title')
         }
         console.log(individual_post);
