@@ -1,39 +1,37 @@
 <main class = "content">
 
 	{{#if showsearch}}
-		<div class = "fullSearch">
+		<div class = "full-search">
 			{{> searchBar}}
-			<div class = "advancedSearch">
-				<div class = "searchContainer">
-					<label for = "classSearch" class = "searchLabel">Class</label>
-					<input type = "text" name = "classSearch" id = "classSearch">
+			<div class = "advanced-search">
+				<div class = "search-container">
+					<label for = "class-search" class = "search-label">Class</label>
+					<input type = "text" name = "class-search" id = "class-search">
 				</div>
-				<div class = "searchContainer">
-					<label for = "professorSearch" class = "searchLabel">Professor</label>
-					<input type = "text" name = "professorSearch" id = "professorSearch">
+				<div class = "search-container">
+					<label for = "professor-search" class = "search-label">Professor</label>
+					<input type = "text" name = "professor-search" id = "professor-search">
 				</div>
-				<div class = "searchContainer">
-					<label for = "dateSearchBefore" class = "searchLabel">Uploaded before</label>
-					<div id = "dateSearchBefore" class = "dateInputs">
-						<input type = "text" name = "dateSearchBeforeM" id = "dateSearchBeforeM" placeholder = "MM">
-						<input type = "text" name = "dateSearchBeforeD" id = "dateSearchBeforeD" placeholder = "DD">
-						<input type = "text" name = "dateSearchBeforeY" id = "dateSearchBeforeY" placeholder = "YY">
-					</div>
+				<div class="search-container">
+					<label for="select-term" class="search-label">Term</label>
+					<select id="select-term">
+						<option value="" selected>Select term</option>
+                		<option>Fall</option>
+                		<option>Winter</option>
+                		<option>Spring</option>
+                		<option>Summer</option>
+					</select>
 				</div>
-				<div class = "searchContainer">
-					<label for = "dateSearchAfter" class = "searchLabel">Uploaded after</label>
-					<div id = "dateSearchAfter" class = "dateInputs">
-						<input type = "text" name = "dateSearchBeforeM" id = "dateSearchBeforeM" placeholder = "MM">
-						<input type = "text" name = "dateSearchBeforeD" id = "dateSearchBeforeD" placeholder = "DD">
-						<input type = "text" name = "dateSearchBeforeY" id = "dateSearchBeforeY" placeholder = "YY">
-					</div>
+				<div class="search-container">
+					<label for="year-input" class="search-label">Term</label>
+					<input type="text" id="year-input">
 				</div>
 			</div>
 		</div>
 	
 	{{/if}}
 	
-	<div class = "postContainer">
+	<div class = "post-container">
 		{{#each post}}
 			{{> userPost showbody=false}}
 		{{/each}}
