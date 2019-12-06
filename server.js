@@ -45,6 +45,11 @@ app.get('/posts/:postNum', function (req, res, next) {
 	}
 });
 
+app.get('/about', function (req, res) {
+    res.status('200');
+    res.render('about');	
+});
+
 // add any other redirects
 
 app.get('*', function (req, res) {
