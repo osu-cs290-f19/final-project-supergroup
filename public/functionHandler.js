@@ -1,11 +1,10 @@
-var server = require("server.js");
-//var posts = server.postsArray;
-
+//var server = require("server.js");
+//var posts = server.postsArray
 console.log('loading index.js');
 var contentArray= [];
 
-function insertPost(){
-    //
+function create_posts(){
+    //nada for now
 }
 
 function checkFilters(post, filters){
@@ -23,6 +22,7 @@ function checkFilters(post, filters){
         var filter_class = filters.class.toLowerCase();
         var post_class = post.class.toLowerCase()
         if(post_class.indexOf(filter_class)<0){
+            console.log("did not match class:",filter_class,post_class);
             return false;
         }
     }
@@ -48,23 +48,37 @@ function checkFilters(post, filters){
     return true;
 }
 
+function delete_posts(){
+    var postsArray = document.getElementsByClassName("userPost");
+    console.log(postsArray);
+    while (postsArray.lastChild){
+        postsArray.removeChild(postsArray.lastChild);
+    }
+}
+
 function updatePosts(event){
     console.log('updating\n');
     //delete all posts in dom
+    delete_posts();
     //re-create all posts from back end data.
     create_posts();
     //update posts to match search parameters
     var new_filters = {
-    classSearch: document.getElementById('classSearch');
-    professorSearch: document.getElementById('professorSearch');
-    search_bar_text: document.getElementById('search-bar-text');
+    class: document.getElementById('classSearch'),
+    professor: document.getElementById('professorSearch'),
+    text: document.getElementById('search-bar-text'),
     }
-    post_list = document.querySelectorAll(".post");
-    for (var i =post_info.length; i>0;i--){ 
+    post_info = document.querySelectorAll(".userPost");
+    console.log(post_info.length);
+    for (var i =post_info.length-1; i>=0;i--){ 
         var individual_post = {
-        post_prof: post_info[i].getAttribute('data-professor');
-        post_class: post_info[i].getAttribute('data-class');
+        professor: post_info[i].getAttribute('data-professor'),
+        class: post_info[i].getAttribute('data-class'),
+        term: post_info[i].getAttribute('data-term'),
+        body: post_info[i].getAttribute('data-body'),
+        title: post_info[i].getAttribute('data-title')
         }
+        console.log(individual_post);
         if (!checkFilters(individual_post,new_filters)){
 
         }
@@ -80,9 +94,3 @@ function updatePosts(event){
 var update_button = document.getElementById('search-button');
 console.log('found search button:\n',update_button);
 update_button.addEventListener('click',updatePosts);
-
-function create_posts(json_data){
-    userPosts.forEach(element => {
-        console.log(element);
-    });
-}
