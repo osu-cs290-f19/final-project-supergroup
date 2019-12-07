@@ -80,16 +80,15 @@ function updatePosts(event){
     year: document.getElementById("year-input").value
     }
     var original_posts = contentArray;
-    //console.log(post_info.length);
     for (var i =original_posts.length-1; i>=0;i--){ 
-        var individual_post = {
-        professor: original_posts[i].getAttribute('data-professor'),
-        class: original_posts[i].getAttribute('data-class'),
-        term: original_posts[i].getAttribute('data-term'),
-        title: original_posts[i].getElementsByClassName('post-title')[0].textContent,
-        year: original_posts[i].getAttribute('data-year'),
-        body: original_posts[i].getElementsByClassName('post-body-contents')[0].textContent,
-        resource: original_posts[i].getElementsByClassName('post-resource')[0].textContent
+        var individual_post = { //gather post data
+            professor: original_posts[i].getAttribute('data-professor'),
+            class: original_posts[i].getAttribute('data-class'),
+            term: original_posts[i].getAttribute('data-term'),
+            title: original_posts[i].getElementsByClassName('post-title')[0].textContent,
+            year: original_posts[i].getAttribute('data-year'),
+            body: original_posts[i].getElementsByClassName('post-body-contents')[0].textContent,
+            resource: original_posts[i].getElementsByClassName('post-resource')[0].textContent
         }
         if (!checkFilters(individual_post,new_filters)){
             console.log("failed test");
