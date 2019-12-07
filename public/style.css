@@ -1,5 +1,11 @@
 body {
 	margin: 0;
+	font-family: Lato;
+}
+
+a {
+	text-decoration: none;
+	color: #ffffff;
 }
 
 header {
@@ -46,6 +52,16 @@ header {
 	line-height: 5em;
 }
 
+#navbar div {
+	height: 100%;
+	width: 20%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	line-height: 5em;
+}
+
+
 #navbar div:hover {
 	background-color: #dc4405;
 	color: #000000;
@@ -78,6 +94,32 @@ header {
 
 #search-bar-text {
 	width: 100%;
+	margin: 1.5em 0;
+}
+
+#search-button, #search-link {
+	display: inline-block;
+	width: 30%;
+	height: 30px;
+	line-height: 30px;
+	font-size: 1em;
+	text-decoration: none;
+	background-color: #000000;
+	color: #ffffff;
+	text-align: center;
+	vertical-align: top;
+	float: top;
+}
+
+#search-button {
+	border: none;
+	margin-left: 10%;
+}
+
+#search-link {
+	float: right;
+	margin-right: 10%;
+
 }
 
 .browse-contents {
@@ -139,5 +181,33 @@ header {
 	text-decoration: none;
 	background-color: #000000;
 	color: #ffffff;
+
+}
+
+.full-search {
+	width: 15%;
+	display: inline-block;
+	background-color: #737373;
+	padding: 1em;
+}
+
+.full-search span {
+	display: table;
+	margin: auto;
+	font-size: 1.25em;
+	font-weight: 600;
+}
+
+.search-container {
+	margin: 1em 0;
+}
+
+.about-page {
+	width: 80%;
+	margin: auto;
+}
+
+.about-page #title {
+	text-align: center;
 }
 
