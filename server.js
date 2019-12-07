@@ -36,11 +36,10 @@ app.get('/browse', function (req, res) {
 
 app.get('/posts/:postNum', function (req, res, next) {
 	var postNum = req.params.postNum;
+	var showPost = Object.assign({'showbody': true}, postsArray[postNum]);
 	if (+postNum >= 0 && +postNum < +postsArray.length) {
-		res.render('browse', {
-			showsearch: false,
-			post: [postsArray[postNum]]
-		});
+		console.log(showPost);
+		res.render('singlePost', showPost);
 	} else {
 		next();
 	}
