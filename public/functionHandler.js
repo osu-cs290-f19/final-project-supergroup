@@ -7,6 +7,10 @@ function grabData(){
     contentArray = document.getElementsByClassName("user-post");
 }
 
+function create_posts(){
+    //invert the delete function
+
+}
 
 function checkFilters(post, filters){
     //check title
@@ -66,6 +70,7 @@ function updatePosts(event){
     //delete all posts in dom
     delete_posts();
     //re-create all posts from back end data and
+    create_posts();
     //update posts to match search parameters
     var new_filters = {
     class: document.getElementById('class-search').value,
@@ -81,22 +86,18 @@ function updatePosts(event){
         professor: original_posts[i].getAttribute('data-professor'),
         class: original_posts[i].getAttribute('data-class'),
         term: original_posts[i].getAttribute('data-term'),
-        title: original_posts[i].getElementsByClassName('post-title')[0].textContent
-        //year: original_posts[i].getAttribute('data-year')
+        title: original_posts[i].getElementsByClassName('post-title')[0].textContent,
+        year: original_posts[i].getAttribute('data-year'),
+        body: original_posts[i].getElementsByClassName('post-body-contents')[0].textContent,
+        resource: original_posts[i].getElementsByClassName('post-resource')[0].textContent
         }
         if (!checkFilters(individual_post,new_filters)){
             console.log("failed test");
         }else{
-            console.log("passed test");
+            addNewPost(individual_post.title,individual_post.class,individual_post.term,individual_post.professor,individual_post.year,individual_post.body,individual_post.resource)
         }
     }
 }
-
-//allow functionality of search button
-var update_button = document.getElementById('search-button');
-console.log('found search button:\n',update_button);
-update_button.addEventListener('click',updatePosts);
-
 
 function addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, postBody, postResource) {
     var postData = {
@@ -111,7 +112,7 @@ function addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, pos
 
     var requestData = JSON.stringify(postData);
     var request = new XMLHttpRequest();
-    
+
     request.open('POST', '/add-post');
     request.setRequestHeader('Content-Type', 'application/json');
     request.addEventListener('load', function (event) {
@@ -145,5 +146,9 @@ window.addEventListener('DOMContentLoaded', function () {
     var addPostButton = document.getElementById("add-post-button");
     if (addPostButton) {
         addPostButton.addEventListener('click', addPostClick);
+    }
+    var update_button = document.getElementById('search-button');
+    if (update_button){
+        update_button.addEventListener('click',updatePosts);
     }
 });
