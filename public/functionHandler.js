@@ -96,10 +96,6 @@ function updatePosts(event){
 var update_button = document.getElementById('search-button');
 console.log('found search button:\n',update_button);
 update_button.addEventListener('click',updatePosts);
-<<<<<<< HEAD
-window.addEventListener('load',grabData());
-console.log(contentArray);
-=======
 
 
 function addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, postBody, postResource) {
@@ -114,8 +110,8 @@ function addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, pos
     };
 
     var requestData = JSON.stringify(postData);
-
     var request = new XMLHttpRequest();
+    
     request.open('POST', '/add-post');
     request.setRequestHeader('Content-Type', 'application/json');
     request.addEventListener('load', function (event) {
@@ -125,7 +121,6 @@ function addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, pos
             location.assign(window.location.origin + "/browse");
         }
     });
-
     request.send(requestData);
 }
 
@@ -147,11 +142,8 @@ function addPostClick() {
 }
 
 window.addEventListener('DOMContentLoaded', function () {
-
     var addPostButton = document.getElementById("add-post-button");
     if (addPostButton) {
         addPostButton.addEventListener('click', addPostClick);
     }
-
 });
->>>>>>> 7bc261fe79cf7685de03b5a81cd2883504f4a0ad
