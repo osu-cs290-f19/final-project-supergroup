@@ -19,7 +19,7 @@ function addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, pos
         if (event.target.status !== 200) {
             alert("Something went wrong adding your post.");
         } else {
-            window.location.assign("localhost:3000/browse");
+            location.assign(window.location.origin + "/browse");
         }
     });
 

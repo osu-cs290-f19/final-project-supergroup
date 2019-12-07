@@ -66,7 +66,7 @@ app.post('/add-post', function (req, res) {
 
 		// postsArray.push(req.body);
 		// fs.writeFileSync('./userPosts.json', JSON.stringify(postsArray, null, 2), 'utf-8');
-		res.status(200);
+		res.status(200).send("Post added");
 	} else {
 		console.log("== Client sent bad post data, returned status code 400");
 		console.log(req.body);
@@ -83,4 +83,4 @@ app.get('*', function (req, res) {
 
 app.listen(port, function () {
     console.log("== Server is listening on port", port);
-  });
+});
