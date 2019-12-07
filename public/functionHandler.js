@@ -9,6 +9,10 @@ function create_posts(){
 
 function checkFilters(post, filters){
     //check title
+    console.log("filters.class:",filters.class);
+    console.log("filters.professor:",filters.professor);
+    console.log("filters.term:",filters.term);
+
     if (filters.text){
         var post_title = post.title.toLowerCase();
         var filter_text = filters.text.toLowerCase();
@@ -63,24 +67,25 @@ function updatePosts(event){
     create_posts();
     //update posts to match search parameters
     var new_filters = {
-    class: document.getElementById('classSearch'),
-    professor: document.getElementById('professorSearch'),
-    text: document.getElementById('search-bar-text'),
+    class: document.getElementById('class-search').value,
+    professor: document.getElementById('professor-search').value,
+    text: document.getElementById('search-bar-text').value,
+    term: document.getElementById("select-term").value
     }
-    post_info = document.querySelectorAll(".userPost");
-    console.log(post_info.length);
+    post_info = document.querySelectorAll(".user-post");
+    //console.log(post_info.length);
     for (var i =post_info.length-1; i>=0;i--){ 
         var individual_post = {
         professor: post_info[i].getAttribute('data-professor'),
         class: post_info[i].getAttribute('data-class'),
         term: post_info[i].getAttribute('data-term'),
-        title: post_info[i].getAttribute('data-title')
+        title: post_info[i].getElementsByClassName('post-title')[0].textContent
         }
         console.log(individual_post);
         if (!checkFilters(individual_post,new_filters)){
-
+            console.log(individual_post);
         }
-        console.log(post_class,post_prof);
+        //console.log(post_class,post_prof);
         //var post_year = post_info[i].getAttribute('data-year');
         //var post_term = post_info[i].getAttribute('data-term');
 
