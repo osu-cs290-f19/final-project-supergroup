@@ -7,6 +7,7 @@ var path = require('path');
 var express = require('express');
 var exphbs = require('express-handlebars');
 var fs = require('fs');
+var bodyParser = require("body-parser");
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -17,41 +18,73 @@ app.set('view engine', 'handlebars');
 var rawJson = fs.readFileSync('./userPosts.json', 'utf8');
 var postsArray = JSON.parse(rawJson);
 
+app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-    res.status('200');
+    res.status(200);
     res.render('home');
 });
 
 app.get('/browse', function (req, res) {
-    res.status('200');
+    res.status(200);
     res.render('browse', {
-		showsearch: true, 
+		showsearch: true,
 		post: postsArray
-		});
+	});
 });
 
 app.get('/posts/:postNum', function (req, res, next) {
 	var postNum = req.params.postNum;
+	var showPost = Object.assign({'showbody': true}, postsArray[postNum]);
 	if (+postNum >= 0 && +postNum < +postsArray.length) {
-		res.render('browse', {
-		showsearch: false,
-		post: [postsArray[postNum]]
-	});
-	}
-	else {
+		console.log(showPost);
+		res.render('singlePost', showPost);
+	} else {
 		next();
 	}
 });
 
+app.get('/post', function (req, res) {
+	res.status(200);
+	res.render('addPost');
+});
+
+app.get('/about', function (req, res) {
+    res.status('200');
+    res.render('about');	
+});
+
 // add any other redirects
 
+app.post('/add-post', function (req, res) {
+	if (req.body && req.body.title && req.body.class && req.body.term && req.body.professor && req.body.uploadDate && req.body.body && req.body.resource) {
+		console.log("== Client added the following post:");
+		console.log("   - title:", req.body.title);
+		console.log("   - class:", req.body.class);
+		console.log("   - term:", req.body.term);
+		console.log("   - professor:", req.body.professor);
+		console.log("   - uploadDate:", req.body.uploadDate);
+		console.log("   - body:", req.body.body);
+		console.log("   - resource:", req.body.resource);
+
+		// postsArray.push(req.body);
+		// fs.writeFileSync('./userPosts.json', JSON.stringify(postsArray, null, 2), 'utf-8');
+		res.status(200).send("Post added");
+	} else {
+		console.log("== Client sent bad post data, returned status code 400");
+		console.log(req.body);
+		res.status(400).send("ERROR");
+	}
+});
+
 app.get('*', function (req, res) {
-    res.status('404');
+    res.status(404);
     res.render('404');
 });
 
+
+
 app.listen(port, function () {
     console.log("== Server is listening on port", port);
-  });
+});

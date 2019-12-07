@@ -1,8 +1,9 @@
 <main class = "content">
+	<div class = "browse-contents">
 
-	{{#if showsearch}}
+		{{#if showsearch}}
 		<div class = "full-search">
-			{{> searchBar}}
+			{{> searchBar showadvanced=false}}
 			<div class = "advanced-search">
 				<div class = "search-container">
 					<label for = "class-search" class = "search-label">Class</label>
@@ -16,10 +17,10 @@
 					<label for="select-term" class="search-label">Term</label>
 					<select id="select-term">
 						<option value="" selected>Select term</option>
-                		<option>Fall</option>
-                		<option>Winter</option>
-                		<option>Spring</option>
-                		<option>Summer</option>
+						<option>Fall</option>
+						<option>Winter</option>
+						<option>Spring</option>
+						<option>Summer</option>
 					</select>
 				</div>
 				<div class="search-container">
@@ -28,12 +29,13 @@
 				</div>
 			</div>
 		</div>
-	
-	{{/if}}
-	
-	<div class = "post-container">
-		{{#each post}}
-			{{> userPost showbody=false}}
-		{{/each}}
+			
+		{{/if}}
+		
+		<div class = "post-container">
+			{{#each post}}
+				{{> userPost}}
+			{{/each}}
+		</div>
 	</div>
 </main>
