@@ -9,10 +9,6 @@ function create_posts(){
 
 function checkFilters(post, filters){
     //check title
-    console.log("filters.class:",filters.class);
-    console.log("filters.professor:",filters.professor);
-    console.log("filters.term:",filters.term);
-
     if (filters.text){
         var post_title = post.title.toLowerCase();
         var filter_text = filters.text.toLowerCase();
@@ -25,7 +21,6 @@ function checkFilters(post, filters){
         var filter_class = filters.class.toLowerCase();
         var post_class = post.class.toLowerCase()
         if(post_class.indexOf(filter_class)<0){
-            console.log("did not match class:",filter_class,post_class);
             return false;
         }
     }
@@ -37,7 +32,6 @@ function checkFilters(post, filters){
             return false;
         }
     }
-    //check upload date?
     //check professor
     if (filters.professor){
         var filter_prof = filters.professor.toLowerCase();
@@ -60,7 +54,6 @@ function delete_posts(){
 }
 
 function updatePosts(event){
-    console.log('updating\n');
     //delete all posts in dom
     delete_posts();
     //re-create all posts from back end data.
@@ -81,9 +74,10 @@ function updatePosts(event){
         term: post_info[i].getAttribute('data-term'),
         title: post_info[i].getElementsByClassName('post-title')[0].textContent
         }
-        console.log(individual_post);
         if (!checkFilters(individual_post,new_filters)){
-            console.log(individual_post);
+            console.log("failed test");
+        }else{
+            console.log("passed test");
         }
         //console.log(post_class,post_prof);
         //var post_year = post_info[i].getAttribute('data-year');
