@@ -51,6 +51,11 @@ app.get('/post', function (req, res) {
 	res.render('addPost');
 });
 
+app.get('/about', function (req, res) {
+    res.status('200');
+    res.render('about');	
+});
+
 // add any other redirects
 
 app.post('/add-post', function (req, res) {
