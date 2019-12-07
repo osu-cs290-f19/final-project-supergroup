@@ -3,7 +3,7 @@
 
 		{{#if showsearch}}
 		<div class = "full-search">
-			{{> searchBar}}
+			{{> searchBar showadvanced=false}}
 			<div class = "advanced-search">
 				<div class = "search-container">
 					<label for = "class-search" class = "search-label">Class</label>
@@ -34,7 +34,7 @@
 		
 		<div class = "post-container">
 			{{#each post}}
-				{{> userPost showbody=false}}
+				{{> userPost}}
 			{{/each}}
 		</div>
 	</div>

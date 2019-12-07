@@ -125,7 +125,11 @@ header {
 }
 
 .user-post {
+	margin: 5px;
 	padding: 10px;
+	border: 2px solid gray;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px gray;
 }
 
 #search-button, #search-link {
