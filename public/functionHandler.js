@@ -110,6 +110,15 @@ function delete_posts(postsArray){
 
 function updatePosts(event){
     //delete all posts in dom
+    if (window.location.href.split("/")[3] == ""){
+        //save variable
+        var searchtext = document.getElementById('search-bar-text').value;
+        //switch to browse page
+        window.location.replace("/browse");
+        //call update
+        document.getElementById("search-bar-text").value = searchtext;
+        console.log(searchtext);
+    }
     var postsArray = document.getElementsByClassName("post-container")[0];
     delete_posts(postsArray);
     //re-create all posts from back end data and
@@ -199,7 +208,6 @@ function addPostClick() {
 }
 
 window.addEventListener('DOMContentLoaded', function () {
-
     var updateButton = document.getElementById('search-button');
     if (updateButton) {
         updateButton.addEventListener('click',updatePosts);
