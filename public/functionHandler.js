@@ -5,23 +5,57 @@ function grabData(){
     for (var i=0; i <all_posts.length; i++){
         //create json object
         var current_post =all_posts[i];
+        //console.log(current_post.getElementsByClassName("post-body-contents"));
+
         var newPost = {
             class: current_post.getAttribute("data-class"),
             term: current_post.getAttribute("data-term"),
             professor: current_post.getAttribute("data-professor"),
-            class: current_post.getAttribute("data-class"),
-            class: current_post.getAttribute("data-class"),
+            postNum: current_post.getAttribute("data-post-number"),
+            year: current_post.getAttribute("data-year"),
+            uploadDate: current_post.getAttribute("data-upload-date"),
+            title: current_post.getElementsByClassName("post-title")[0].textContent,
+            body: current_post.getAttribute("data-body"),
+            resource: current_post.getAttribute("data-resource")
         }
         //add it to the content array...
-        all_posts.push(newPost);
+        contentArray.push(newPost);
     }
 }
 
-function create_posts(){
-    //invert the delete function
-    console.log(contentArray.lastChild);
+function create_posts(filters){
+    for (var i=0; i<contentArray.length;i++){
+        //check each post for filters, and then re-insert if it passes:
+        var post = contentArray[i];
+        var post_data = {
+            title: post.title,
+            class: post.class,
+            term: post.term,
+            professor: post.professor,
+            year: post.year
+        }
+        if (checkFilters(post_data,filters)){
+            console.log(post);
+            insertNewPost(post);
+        }
+    }
 }
 
+function insertNewPost(post){
+    var post_html = Handlebars.templates.postTemplate({
+        class: post.class,
+        uploadDate: post.uploadDate,
+        postNum: post.postNum,
+        title: post.title,
+        term: post.term,
+        year: post.year,
+        professor: post.professor,
+        body: post.body,
+        resource: post.resource
+    });
+    var posts_section = document.getElementsByClassName("post-container");
+    posts_section.insertAdjacentHTML('beforeend',post_html);
+}
 
 function checkFilters(post, filters){
     //check title
@@ -69,11 +103,7 @@ function checkFilters(post, filters){
 }
 
 function delete_posts(postsArray){
-    console.log("posts array",postsArray);
-    console.log("posts array 0",postsArray.lastChild);
-    //console.log("posts array lastchild:",postsArray.lastChild);
     while (postsArray.lastChild){
-        //contentArray.push(postsArray.lastChild);
         postsArray.removeChild(postsArray.lastChild);
     }
 }
@@ -83,7 +113,6 @@ function updatePosts(event){
     var postsArray = document.getElementsByClassName("post-container")[0];
     delete_posts(postsArray);
     //re-create all posts from back end data and
-    create_posts();
     //update posts to match search parameters
     var new_filters = {
     class: document.getElementById('class-search').value,
@@ -92,23 +121,24 @@ function updatePosts(event){
     term: document.getElementById("select-term").value,
     year: document.getElementById("year-input").value
     }
-    var original_posts = contentArray;
-    for (var i =original_posts.length-1; i>=0;i--){ 
-        var individual_post = { //gather post data
-            professor: original_posts[i].getAttribute('data-professor'),
-            class: original_posts[i].getAttribute('data-class'),
-            term: original_posts[i].getAttribute('data-term'),
-            title: original_posts[i].getElementsByClassName('post-title')[0].textContent,
-            year: original_posts[i].getAttribute('data-year'),
-            body: original_posts[i].getElementsByClassName('post-body-contents')[0].textContent,
-            resource: original_posts[i].getElementsByClassName('post-resource')[0].textContent
-        }
-        if (!checkFilters(individual_post,new_filters)){
-            console.log("failed test");
-        }else{
-            addNewPost(individual_post.title,individual_post.class,individual_post.term,individual_post.professor,individual_post.year,individual_post.body,individual_post.resource)
-        }
-    }
+    create_posts(new_filters);
+//     var original_posts = contentArray;
+//     for (var i =original_posts.length-1; i>=0;i--){ 
+//         var individual_post = { //gather post data
+//             professor: original_posts[i].getAttribute('data-professor'),
+//             class: original_posts[i].getAttribute('data-class'),
+//             term: original_posts[i].getAttribute('data-term'),
+//             title: original_posts[i].getElementsByClassName('post-title')[0].textContent,
+//             year: original_posts[i].getAttribute('data-year'),
+//             body: original_posts[i].getElementsByClassName('post-body-contents')[0].textContent,
+//             resource: original_posts[i].getElementsByClassName('post-resource')[0].textContent
+//         }
+//         if (!checkFilters(individual_post,new_filters)){
+//             console.log("failed test");
+//         }else{
+//             addNewPost(individual_post.title,individual_post.class,individual_post.term,individual_post.professor,individual_post.year,individual_post.body,individual_post.resource)
+//         }
+//     }
 }
 
 //allow functionality of search button
