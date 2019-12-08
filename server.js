@@ -36,10 +36,14 @@ app.get('/browse', function (req, res) {
 
 app.get('/posts/:postNum', function (req, res, next) {
 	var postNum = req.params.postNum;
-	var showPost = Object.assign({'showbody': true}, postsArray[postNum]);
-	if (+postNum >= 0 && +postNum < +postsArray.length) {
-		console.log(showPost);
-		res.render('singlePost', showPost);
+	var index = postsArray.length - (+postNum + 1);
+	
+	if (+index >= 0 && +index < +postsArray.length) {
+		var showPost = Object.assign({'showbody': true}, postsArray[index]);
+		res.render('browse', {
+			showsearch: false,
+			post: [showPost]
+		});
 	} else {
 		next();
 	}
@@ -57,20 +61,27 @@ app.get('/about', function (req, res) {
 
 // add any other redirects
 
+app.post('/get-post-num', function(req, res) {
+	var newPostNum = postsArray.length;
+	res.status(200).send(newPostNum.toString());
+});
+
 app.post('/add-post', function (req, res) {
-	if (req.body && req.body.title && req.body.class && req.body.term && req.body.professor && req.body.uploadDate && req.body.body && req.body.resource) {
+	if (req.body && req.body.postNum && req.body.title && req.body.class && req.body.term && req.body.year && req.body.professor && req.body.uploadDate && req.body.body && req.body.resource) {
 		console.log("== Client added the following post:");
+		console.log("   - postNum:", req.body.postNum);
 		console.log("   - title:", req.body.title);
 		console.log("   - class:", req.body.class);
 		console.log("   - term:", req.body.term);
+		console.log("   - year:", req.body.year);
 		console.log("   - professor:", req.body.professor);
 		console.log("   - uploadDate:", req.body.uploadDate);
 		console.log("   - body:", req.body.body);
 		console.log("   - resource:", req.body.resource);
 
-		// postsArray.push(req.body);
-		// fs.writeFileSync('./userPosts.json', JSON.stringify(postsArray, null, 2), 'utf-8');
-		res.status(200).send("Post added");
+		postsArray.unshift(req.body);
+		//fs.writeFileSync('./userPosts.json', JSON.stringify(postsArray, null, 2), 'utf-8');
+		//res.status(200).send("Post added");
 	} else {
 		console.log("== Client sent bad post data, returned status code 400");
 		console.log(req.body);

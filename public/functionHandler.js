@@ -1,6 +1,3 @@
-//var server = require("server.js");
-//var posts = server.postsArray
-console.log('loading index.js');
 var contentArray= [];
 
 function grabData(){
@@ -11,6 +8,7 @@ function create_posts(){
     //invert the delete function
 
 }
+
 
 function checkFilters(post, filters){
     //check title
@@ -98,11 +96,17 @@ function updatePosts(event){
     }
 }
 
-function addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, postBody, postResource) {
+//allow functionality of search button
+
+function addNewPost(postNum, postTitle, postClass, postTerm, postYear, postProfessor, postDate, postBody, postResource) {
+
+
     var postData = {
+        postNum: postNum,
         title: postTitle,
         class: postClass,
         term: postTerm,
+        year: postYear,
         professor: postProfessor,
         uploadDate: postDate,
         body: postBody,
@@ -128,26 +132,36 @@ function addPostClick() {
     var postTitle = document.getElementById("post-title-input").value;
     var postClass = document.getElementById("post-class-input").value;
     var postTerm = document.getElementById("post-term-input").value;
+    var postYear = document.getElementById("post-year-input").value;
     var postProfessor = document.getElementById("post-pf-input").value;
-    var now = new Date();
+    var now = new Date()
     var postDate = (now.getMonth()+1) + "/" + now.getDate() + "/" + now.getFullYear();
     var postBody = document.getElementById("post-body-input").value;
     var postResource = document.getElementById("post-resource-input").value;
 
-    if (postTitle && postClass && postTerm && postProfessor && postBody && postResource) {
-        addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, postBody, postResource);
+    if (postTitle && postClass && postTerm && postYear && postProfessor && postBody && postResource) {
+        var request = new XMLHttpRequest();
+        request.open('POST', '/get-post-num');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.addEventListener('load', function (event) {
+            var postNum = event.target.response;
+            addNewPost(postNum, postTitle, postClass, postTerm, postYear, postProfessor, postDate, postBody, postResource);
+        });
+        request.send(JSON.stringify({}));
     } else {
         alert("Please fill out all fields before submitting.");
     }
 }
 
 window.addEventListener('DOMContentLoaded', function () {
+
+    var updateButton = document.getElementById('search-button');
+    if (updateButton) {
+        updateButton.addEventListener('click',updatePosts);
+    }
+    
     var addPostButton = document.getElementById("add-post-button");
     if (addPostButton) {
         addPostButton.addEventListener('click', addPostClick);
-    }
-    var update_button = document.getElementById('search-button');
-    if (update_button){
-        update_button.addEventListener('click',updatePosts);
     }
 });
