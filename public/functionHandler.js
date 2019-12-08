@@ -1,6 +1,3 @@
-//var server = require("server.js");
-//var posts = server.postsArray
-console.log('loading index.js');
 var contentArray= [];
 
 function grabData(){
@@ -93,8 +90,73 @@ function updatePosts(event){
 }
 
 //allow functionality of search button
-var update_button = document.getElementById('search-button');
-console.log('found search button:\n',update_button);
-update_button.addEventListener('click',updatePosts);
-window.addEventListener('load',grabData());
-console.log(contentArray);
+
+function addNewPost(postNum, postTitle, postClass, postTerm, postYear, postProfessor, postDate, postBody, postResource) {
+
+
+    var postData = {
+        postNum: postNum,
+        title: postTitle,
+        class: postClass,
+        term: postTerm,
+        year: postYear,
+        professor: postProfessor,
+        uploadDate: postDate,
+        body: postBody,
+        resource: postResource
+    };
+
+    var requestData = JSON.stringify(postData);
+
+    var request = new XMLHttpRequest();
+    request.open('POST', '/add-post');
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.addEventListener('load', function (event) {
+        if (event.target.status !== 200) {
+            alert("Something went wrong adding your post.");
+        } else {
+            location.assign(window.location.origin + "/browse");
+        }
+    });
+
+    request.send(requestData);
+}
+
+function addPostClick() {
+    var postTitle = document.getElementById("post-title-input").value;
+    var postClass = document.getElementById("post-class-input").value;
+    var postTerm = document.getElementById("post-term-input").value;
+    var postYear = document.getElementById("post-year-input").value;
+    var postProfessor = document.getElementById("post-pf-input").value;
+    var now = new Date()
+    var postDate = (now.getMonth()+1) + "/" + now.getDate() + "/" + now.getFullYear();
+    var postBody = document.getElementById("post-body-input").value;
+    var postResource = document.getElementById("post-resource-input").value;
+
+    if (postTitle && postClass && postTerm && postYear && postProfessor && postBody && postResource) {
+        var request = new XMLHttpRequest();
+        request.open('POST', '/get-post-num');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.addEventListener('load', function (event) {
+            var postNum = event.target.response;
+            addNewPost(postNum, postTitle, postClass, postTerm, postYear, postProfessor, postDate, postBody, postResource);
+        });
+        request.send(JSON.stringify({}));
+    } else {
+        alert("Please fill out all fields before submitting.");
+    }
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+
+    var updateButton = document.getElementById('search-button');
+    if (updateButton) {
+        updateButton.addEventListener('click',updatePosts);
+    }
+
+    var addPostButton = document.getElementById("add-post-button");
+    if (addPostButton) {
+        addPostButton.addEventListener('click', addPostClick);
+    }
+
+});
