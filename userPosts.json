@@ -1,29 +1,10 @@
 [
   {
-    "postNum": 2,
-    "title": "Test no 2",
-    "class": "Operating systems",
-    "term": "Fall",
-    "uploadDate": "12/8/2019",
-    "professor": "Braxton Cuneo",
-    "body": "This is another test",
-    "resource": "/"
-  },
-  {
-    "postNum": 1,
-    "title": "Big assignment",
-    "class": "Operating systems",
-    "term": "Fall",
-    "uploadDate": "12/8/2019",
-    "professor": "Braxton Cuneo",
-    "body": "This is another test",
-    "resource": "/"
-  },
-  {
-    "postNum": 0,
+    "postNum": "0",
     "title": "Assignment 5",
     "class": "Web Development",
     "term": "Fall",
+    "year": "2019",
     "uploadDate": "11/30/2019",
     "professor": "Rob Hess",
     "body": "This is a test of the feature",
