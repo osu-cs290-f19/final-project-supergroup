@@ -89,6 +89,7 @@ header {
 	flex-direction: row;
 	align-items: center;
 	height: 50px;
+	width: 100%;
 }
 
 .search-bar {
@@ -96,6 +97,7 @@ header {
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 #search-bar-text {
@@ -104,29 +106,22 @@ header {
 }
 
 #search-button, #search-link {
-	display: inline-block;
-	width: 30%;
-	height: 30px;
-	line-height: 30px;
 	font-size: 1em;
 	text-decoration: none;
 	background-color: #000000;
 	color: #ffffff;
 	text-align: center;
-	vertical-align: top;
-	float: top;
+
+	margin: 5%;
+	padding: 5px;
+	cursor: pointer;
+	flex: 1 1 100%;
 }
 
 #search-button {
 	border: none;
-	margin-left: 10%;
 }
 
-#search-link {
-	float: right;
-	margin-right: 10%;
-
-}
 
 .browse-contents {
 	display: flex;
@@ -183,16 +178,6 @@ header {
 	box-shadow: 5px 5px 5px gray;
 }
 
-#search-button, #search-link {
-	width: 40%;
-	margin: 2% auto;
-	padding: 5px;
-	text-decoration: none;
-	background-color: #000000;
-	color: #ffffff;
-
-}
-
 .full-search span {
 	display: table;
 	margin: auto;
@@ -200,7 +185,7 @@ header {
 	font-weight: 600;
 }
 
-.post-title a {
+.user-post a {
 	color: black;
 }
 
@@ -233,3 +218,42 @@ header {
 	text-align: center;
 }
 
+.add-post-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+.add-post-body {
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 5px;
+}
+
+.add-post-footer {
+	width: 25%;
+}
+
+#add-post-button {
+	width: 100%;
+	margin: 2% auto;
+	padding: 5px;
+	text-decoration: none;
+	background-color: #000000;
+	color: #ffffff;
+}
+
+.add-post-input {
+	margin: 5px;
+	flex: 1 1 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.add-post-text {
+	width: 75%;
+}
