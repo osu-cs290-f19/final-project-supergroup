@@ -1,12 +1,25 @@
 var contentArray= [];
 
 function grabData(){
-    contentArray = document.getElementsByClassName("user-post");
+    var all_posts = document.getElementsByClassName("user-post");
+    for (var i=0; i <all_posts.length; i++){
+        //create json object
+        var current_post =all_posts[i];
+        var newPost = {
+            class: current_post.getAttribute("data-class"),
+            term: current_post.getAttribute("data-term"),
+            professor: current_post.getAttribute("data-professor"),
+            class: current_post.getAttribute("data-class"),
+            class: current_post.getAttribute("data-class"),
+        }
+        //add it to the content array...
+        all_posts.push(newPost);
+    }
 }
 
 function create_posts(){
     //invert the delete function
-
+    console.log(contentArray.lastChild);
 }
 
 
@@ -55,9 +68,10 @@ function checkFilters(post, filters){
     return true;
 }
 
-function delete_posts(){
-    var postsArray = document.querySelectorAll("post-container");
-    console.log("posts array lastchild:",postsArray.lastChild);
+function delete_posts(postsArray){
+    console.log("posts array",postsArray);
+    console.log("posts array 0",postsArray.lastChild);
+    //console.log("posts array lastchild:",postsArray.lastChild);
     while (postsArray.lastChild){
         //contentArray.push(postsArray.lastChild);
         postsArray.removeChild(postsArray.lastChild);
@@ -66,7 +80,8 @@ function delete_posts(){
 
 function updatePosts(event){
     //delete all posts in dom
-    delete_posts();
+    var postsArray = document.getElementsByClassName("post-container")[0];
+    delete_posts(postsArray);
     //re-create all posts from back end data and
     create_posts();
     //update posts to match search parameters
@@ -164,4 +179,5 @@ window.addEventListener('DOMContentLoaded', function () {
     if (addPostButton) {
         addPostButton.addEventListener('click', addPostClick);
     }
+    grabData();
 });
