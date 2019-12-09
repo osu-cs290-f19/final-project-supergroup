@@ -1,9 +1,10 @@
 [
   {
-    "postNum": 0,
+    "postNum": "0",
     "title": "Assignment 5",
     "class": "Web Development",
     "term": "Fall",
+    "year": "2019",
     "uploadDate": "11/30/2019",
     "professor": "Rob Hess",
     "body": "This is a test of the feature",

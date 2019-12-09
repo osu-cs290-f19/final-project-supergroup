@@ -1,11 +1,9 @@
-//var server = require("server.js");
-//var posts = server.postsArray
-console.log('loading index.js');
 var contentArray= [];
 
-function create_posts(){
-    //nada for now
+function grabData(){
+    contentArray = document.getElementsByClassName("user-post");
 }
+
 
 function checkFilters(post, filters){
     //check title
@@ -40,15 +38,23 @@ function checkFilters(post, filters){
             return false;
         }
     }
+    if (filters.year){
+        var filter_year = filters.year.toLowerCase();
+        var post_year = post.year.toLowerCase();
+        if (post_year.indexOf(filter_year)<0){
+            return false;
+        }
+    }
 
     //if passes all tests...
     return true;
 }
 
 function delete_posts(){
-    var postsArray = document.getElementsByClassName("userPost");
-    console.log(postsArray);
+    var postsArray = document.querySelectorAll("post-container");
+    console.log("posts array lastchild:",postsArray.lastChild);
     while (postsArray.lastChild){
+        //contentArray.push(postsArray.lastChild);
         postsArray.removeChild(postsArray.lastChild);
     }
 }
@@ -56,48 +62,44 @@ function delete_posts(){
 function updatePosts(event){
     //delete all posts in dom
     delete_posts();
-    //re-create all posts from back end data.
-    create_posts();
+    //re-create all posts from original content array, and
     //update posts to match search parameters
     var new_filters = {
     class: document.getElementById('class-search').value,
     professor: document.getElementById('professor-search').value,
     text: document.getElementById('search-bar-text').value,
-    term: document.getElementById("select-term").value
+    term: document.getElementById("select-term").value,
+    year: document.getElementById("year-input").value
     }
-    post_info = document.querySelectorAll(".user-post");
+    var original_posts = contentArray;
     //console.log(post_info.length);
-    for (var i =post_info.length-1; i>=0;i--){ 
+    for (var i =original_posts.length-1; i>=0;i--){ 
         var individual_post = {
-        professor: post_info[i].getAttribute('data-professor'),
-        class: post_info[i].getAttribute('data-class'),
-        term: post_info[i].getAttribute('data-term'),
-        title: post_info[i].getElementsByClassName('post-title')[0].textContent
+        professor: original_posts[i].getAttribute('data-professor'),
+        class: original_posts[i].getAttribute('data-class'),
+        term: original_posts[i].getAttribute('data-term'),
+        title: original_posts[i].getElementsByClassName('post-title')[0].textContent
+        //year: original_posts[i].getAttribute('data-year')
         }
         if (!checkFilters(individual_post,new_filters)){
             console.log("failed test");
         }else{
             console.log("passed test");
         }
-        //console.log(post_class,post_prof);
-        //var post_year = post_info[i].getAttribute('data-year');
-        //var post_term = post_info[i].getAttribute('data-term');
-
-        //check all variables
     }
 }
 
 //allow functionality of search button
-var update_button = document.getElementById('search-button');
-console.log('found search button:\n',update_button);
-update_button.addEventListener('click',updatePosts);
+
+function addNewPost(postNum, postTitle, postClass, postTerm, postYear, postProfessor, postDate, postBody, postResource) {
 
 
-function addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, postBody, postResource) {
     var postData = {
+        postNum: postNum,
         title: postTitle,
         class: postClass,
         term: postTerm,
+        year: postYear,
         professor: postProfessor,
         uploadDate: postDate,
         body: postBody,
@@ -124,20 +126,33 @@ function addPostClick() {
     var postTitle = document.getElementById("post-title-input").value;
     var postClass = document.getElementById("post-class-input").value;
     var postTerm = document.getElementById("post-term-input").value;
+    var postYear = document.getElementById("post-year-input").value;
     var postProfessor = document.getElementById("post-pf-input").value;
-    var now = new Date();
+    var now = new Date()
     var postDate = (now.getMonth()+1) + "/" + now.getDate() + "/" + now.getFullYear();
     var postBody = document.getElementById("post-body-input").value;
     var postResource = document.getElementById("post-resource-input").value;
 
-    if (postTitle && postClass && postTerm && postProfessor && postBody && postResource) {
-        addNewPost(postTitle, postClass, postTerm, postProfessor, postDate, postBody, postResource);
+    if (postTitle && postClass && postTerm && postYear && postProfessor && postBody && postResource) {
+        var request = new XMLHttpRequest();
+        request.open('POST', '/get-post-num');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.addEventListener('load', function (event) {
+            var postNum = event.target.response;
+            addNewPost(postNum, postTitle, postClass, postTerm, postYear, postProfessor, postDate, postBody, postResource);
+        });
+        request.send(JSON.stringify({}));
     } else {
         alert("Please fill out all fields before submitting.");
     }
 }
 
 window.addEventListener('DOMContentLoaded', function () {
+
+    var updateButton = document.getElementById('search-button');
+    if (updateButton) {
+        updateButton.addEventListener('click',updatePosts);
+    }
 
     var addPostButton = document.getElementById("add-post-button");
     if (addPostButton) {

@@ -66,7 +66,14 @@ header {
 	text-decoration: none;
 }
 
+.home-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .main-search {
+	width: 30%;
 	padding-top: 15em;	
 }
 
@@ -75,14 +82,15 @@ header {
 	flex-direction: row;
 	align-items: center;
 	height: 50px;
+	width: 100%;
 }
 
 .search-bar {
-	width: 30%;
 	margin: auto;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 #search-bar-text {
@@ -91,28 +99,20 @@ header {
 }
 
 #search-button, #search-link {
-	display: inline-block;
-	width: 30%;
-	height: 30px;
-	line-height: 30px;
 	font-size: 1em;
 	text-decoration: none;
 	background-color: #000000;
 	color: #ffffff;
 	text-align: center;
-	vertical-align: top;
-	float: top;
+
+	margin: 5%;
+	padding: 5px;
+	cursor: pointer;
+	flex: 1 1 100%;
 }
 
 #search-button {
 	border: none;
-	margin-left: 10%;
-}
-
-#search-link {
-	float: right;
-	margin-right: 10%;
-
 }
 
 .post-container {
@@ -121,7 +121,33 @@ header {
 	width: 80em;
 	min-width: 85%;
 	max-width: 30%;
-	float: right;
+  float: right;
+}
+
+.browse-contents {
+	display: flex;
+	flex-direction: row;
+}
+
+.full-search {
+	width: 20%;
+	padding: 10px;
+	display: inline-block;
+	background-color: #737373;
+	padding: 1em;
+}
+
+.advanced-search {
+	display: flex;
+	flex-direction: column;
+}
+
+.search-container {
+	margin: 5px;
+}
+
+.post-container {
+	width: 100%;
 }
 
 .post-contents {
@@ -172,7 +198,14 @@ header {
 	font-weight: 600;
 }
 
+.user-post a {
+	color: black;
+}
+
 .search-container {
+	display: flex;
+	flex-direction: row;
+	max-width: 100%;
 	margin: 1em 0;
 }
 
@@ -189,3 +222,42 @@ header {
 	text-align: center;
 }
 
+.add-post-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+.add-post-body {
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 5px;
+}
+
+.add-post-footer {
+	width: 25%;
+}
+
+#add-post-button {
+	width: 100%;
+	margin: 2% auto;
+	padding: 5px;
+	text-decoration: none;
+	background-color: #000000;
+	color: #ffffff;
+}
+
+.add-post-input {
+	margin: 5px;
+	flex: 1 1 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.add-post-text {
+	width: 75%;
+}
