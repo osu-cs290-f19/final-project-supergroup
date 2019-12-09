@@ -42,7 +42,7 @@ function create_posts(filters){
 }
 
 function insertNewPost(post){
-    var post_html = Handlebars.templates.postTemplate({
+    var post_html = Handlebars.templates.userPost({
         class: post.class,
         uploadDate: post.uploadDate,
         postNum: post.postNum,
@@ -54,7 +54,7 @@ function insertNewPost(post){
         resource: post.resource
     });
     var posts_section = document.getElementsByClassName("post-container");
-    posts_section.insertAdjacentHTML('beforeend',post_html);
+    posts_section[0].insertAdjacentHTML('beforeend',post_html);
 }
 
 function checkFilters(post, filters){
