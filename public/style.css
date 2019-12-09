@@ -13,6 +13,7 @@ header {
 	width: 100%;
 	height: 5em;
 	background-color: #000000;
+	z-index: 1000;
 }
 
 .header-image-container {
@@ -117,24 +118,12 @@ header {
 
 .post-container {
 	position: relative;
-	top: 5em;
-	width: 80em;
-	min-width: 85%;
-	max-width: 30%;
-  float: right;
+	float: right;
 }
 
 .browse-contents {
 	display: flex;
 	flex-direction: row;
-}
-
-.full-search {
-	width: 20%;
-	padding: 10px;
-	display: inline-block;
-	background-color: #858585;
-	padding: 1em;
 }
 
 .advanced-search {
@@ -180,15 +169,14 @@ header {
 }
 
 .full-search {
-	position: fixed;
 	top: 5em;
-	width: 10em;
+	width: 20%;
 	min-width: 10%;
 	max-width: 30%;
-	height: 100%;
+	height: 30%;
 	display: inline-block;
 	background-color: #737373;
-	padding: 2em;
+	padding: 1em;
 }
 
 .full-search span {
@@ -207,6 +195,15 @@ header {
 	flex-direction: row;
 	max-width: 100%;
 	margin: 1em 0;
+}
+
+.search-input-div {
+	margin: 0 5px;
+	flex: 1 1 100%;
+}
+
+.search-input {
+	width: 100%;
 }
 
 .search-container input {
@@ -260,4 +257,8 @@ header {
 
 .add-post-text {
 	width: 75%;
+}
+
+.content {
+	padding-top: 5em;
 }
