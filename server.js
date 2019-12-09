@@ -29,25 +29,13 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-function preparse(postsArray,searchtext){
-	searchtext = searchtext.toLowerCase();
-	var newArray = [];
-	for (var i=0; i<postsArray.length;i++){
-		var title = postsArray[i].title.toLowerCase();
-		if (title.indexOf(searchtext.toLowerCase())>=0){
-			newArray.push(postsArray[i]);
-		}
-	}
-	return newArray;
-}
-
 app.get('/search/:result',function(req,res,next){
 	var search = req.params.result;
-	if (search.split("%20").length < 1 || search.split("%20")[0]==""){
+	if (search.split("%20").length < 1 || search.split("%20")[0]=="") {
 		next();
 		// res.status(404);
     	// res.render('404');
-	}else{
+	} else {
 		//console.log("search:",search);
 		search = search.split("%20");
 		search = search.join(" ");
@@ -117,8 +105,8 @@ app.post('/add-post', function (req, res) {
 		console.log("   - resource:", req.body.resource);
 
 		postsArray.unshift(req.body);
-		//fs.writeFileSync('./userPosts.json', JSON.stringify(postsArray, null, 2), 'utf-8');
-		//res.status(200).send("Post added");
+		fs.writeFileSync('./userPosts.json', JSON.stringify(postsArray, null, 2), 'utf-8');
+		res.status(200).send("Post added");
 	} else {
 		console.log("== Client sent bad post data, returned status code 400");
 		console.log(req.body);
@@ -131,8 +119,20 @@ app.get('*', function (req, res) {
     res.render('404');
 });
 
-
-
 app.listen(port, function () {
     console.log("== Server is listening on port", port);
 });
+
+
+
+function preparse(postsArray,searchtext) {
+	searchtext = searchtext.toLowerCase();
+	var newArray = [];
+	for (var i=0; i<postsArray.length;i++) {
+		var title = postsArray[i].title.toLowerCase();
+		if (title.indexOf(searchtext.toLowerCase())>=0) {
+			newArray.push(postsArray[i]);
+		}
+	}
+	return newArray;
+}

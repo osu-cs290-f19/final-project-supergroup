@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "prestart": "npm run build",
-    "build": "handlebars -f public/userPost.js views/partials/userPost.handlebars"
+    "build": "handlebars views/partials/userPost.handlebars -f public/userPostTemplate.js"
   },
   "repository": {
     "type": "git",
