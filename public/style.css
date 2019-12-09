@@ -180,7 +180,6 @@ header {
 }
 
 .full-search {
-	position: fixed;
 	top: 5em;
 	width: 10em;
 	min-width: 10%;
