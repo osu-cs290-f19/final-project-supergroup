@@ -1,7 +1,3 @@
-/*
- * Server File
- */
-
 
 var path = require('path');
 var express = require('express');
@@ -33,10 +29,7 @@ app.get('/search/:result',function(req,res,next){
 	var search = req.params.result;
 	if (search.split("%20").length < 1 || search.split("%20")[0]=="") {
 		next();
-		// res.status(404);
-    	// res.render('404');
 	} else {
-		//console.log("search:",search);
 		search = search.split("%20");
 		search = search.join(" ");
 		posts = preparse(postsArray,search)
@@ -83,8 +76,6 @@ app.get('/about', function (req, res) {
     res.status('200');
     res.render('about');	
 });
-
-// add any other redirects
 
 app.post('/get-post-num', function(req, res) {
 	var newPostNum = postsArray.length;
