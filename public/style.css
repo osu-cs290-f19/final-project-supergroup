@@ -220,10 +220,6 @@ header {
 	width: 100%;
 }
 
-.search-container label {
-	
-}
-
 .about-page {
 	width: 80%;
 	margin: auto;
@@ -232,4 +228,3 @@ header {
 .about-page #title {
 	text-align: center;
 }
-
