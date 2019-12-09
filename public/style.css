@@ -9,6 +9,8 @@ a {
 }
 
 header {
+	position: fixed;
+	width: 100%;
 	height: 5em;
 	background-color: #000000;
 }
@@ -24,6 +26,7 @@ header {
 
 .site-title {
 	display: inline-block;
+	max-width: 25%;
 	vertical-align: top;
 }
 
@@ -37,7 +40,7 @@ header {
 	display: inline-block;
 	background-color: #000000;
 	color: #dc4405;
-	width: 60%;
+	width: 50%;
 	height: 100%;
 	vertical-align: top;
 	margin: auto;
@@ -45,22 +48,12 @@ header {
 
 #navbar div {
 	height: 100%;
-	width: 20%;
+	width: 24%;
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
 	line-height: 5em;
 }
-
-#navbar div {
-	height: 100%;
-	width: 20%;
-	display: inline-block;
-	vertical-align: top;
-	text-align: center;
-	line-height: 5em;
-}
-
 
 #navbar div:hover {
 	background-color: #dc4405;
@@ -122,6 +115,14 @@ header {
 	border: none;
 }
 
+.post-container {
+	position: relative;
+	top: 5em;
+	width: 80em;
+	min-width: 85%;
+	max-width: 30%;
+  float: right;
+}
 
 .browse-contents {
 	display: flex;
@@ -178,6 +179,18 @@ header {
 	box-shadow: 5px 5px 5px gray;
 }
 
+.full-search {
+	position: fixed;
+	top: 5em;
+	width: 10em;
+	min-width: 10%;
+	max-width: 30%;
+	height: 100%;
+	display: inline-block;
+	background-color: #737373;
+	padding: 2em;
+}
+
 .full-search span {
 	display: table;
 	margin: auto;
@@ -196,17 +209,8 @@ header {
 	margin: 1em 0;
 }
 
-.search-input-div {
-	margin: 0 5px;
-	flex: 1 1 100%;
-}
-
-.search-input {
+.search-container input {
 	width: 100%;
-}
-
-.search-container label {
-	
 }
 
 .about-page {
