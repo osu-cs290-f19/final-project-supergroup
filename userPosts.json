@@ -9,5 +9,16 @@
     "professor": "Rob Hess",
     "body": "This is a test of the feature",
     "resource": "/"
+  },
+  {
+    "postNum": "1",
+    "title": "Assignment 1",
+    "class": "Data Structures",
+    "term": "Fall",
+    "year": "2019",
+    "uploadDate": "11/20/2019",
+    "professor": "Rob Hess",
+    "body": "This is another test of the feature",
+    "resource": "/"
   }
 ]
