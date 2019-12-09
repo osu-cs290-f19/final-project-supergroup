@@ -153,16 +153,6 @@ header {
 	box-shadow: 5px 5px 5px gray;
 }
 
-#search-button, #search-link {
-	width: 40%;
-	margin: 2% auto;
-	padding: 5px;
-	text-decoration: none;
-	background-color: #000000;
-	color: #ffffff;
-
-}
-
 .full-search {
 	position: fixed;
 	top: 5em;
