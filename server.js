@@ -36,7 +36,7 @@ app.get('/browse', function (req, res) {
 
 app.get('/posts/:postNum', function (req, res, next) {
 	var postNum = req.params.postNum;
-	var index = postsArray.length - (+postNum + 1);
+	var index = postNum;//postsArray.length - (+postNum + 1);
 	
 	if (+index >= 0 && +index < +postsArray.length) {
 		var showPost = Object.assign({'showbody': true}, postsArray[index]);
