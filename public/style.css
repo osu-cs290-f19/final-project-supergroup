@@ -9,6 +9,8 @@ a {
 }
 
 header {
+	position: fixed;
+	width: 100%;
 	height: 5em;
 	background-color: #000000;
 }
@@ -24,6 +26,7 @@ header {
 
 .site-title {
 	display: inline-block;
+	max-width: 25%;
 	vertical-align: top;
 }
 
@@ -37,7 +40,7 @@ header {
 	display: inline-block;
 	background-color: #000000;
 	color: #dc4405;
-	width: 60%;
+	width: 50%;
 	height: 100%;
 	vertical-align: top;
 	margin: auto;
@@ -45,22 +48,12 @@ header {
 
 #navbar div {
 	height: 100%;
-	width: 20%;
+	width: 24%;
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
 	line-height: 5em;
 }
-
-#navbar div {
-	height: 100%;
-	width: 20%;
-	display: inline-block;
-	vertical-align: top;
-	text-align: center;
-	line-height: 5em;
-}
-
 
 #navbar div:hover {
 	background-color: #dc4405;
@@ -122,27 +115,13 @@ header {
 
 }
 
-.browse-contents {
-	display: flex;
-	flex-direction: column;
-}
-
-.full-search {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	min-height: 100px;
-	padding: 10px;
-	background-color: #9e9e9e;
-}
-
-.advanced-search {
-	display: flex;
-	flex-direction: row;
-}
-
-.search-container {
-	margin: 5px;
+.post-container {
+	position: relative;
+	top: 5em;
+	width: 80em;
+	min-width: 85%;
+	max-width: 30%;
+	float: right;
 }
 
 .post-contents {
@@ -185,10 +164,15 @@ header {
 }
 
 .full-search {
-	width: 15%;
+	position: fixed;
+	top: 5em;
+	width: 10em;
+	min-width: 10%;
+	max-width: 30%;
+	height: 100%;
 	display: inline-block;
 	background-color: #737373;
-	padding: 1em;
+	padding: 2em;
 }
 
 .full-search span {
@@ -200,6 +184,10 @@ header {
 
 .search-container {
 	margin: 1em 0;
+}
+
+.search-container input {
+	width: 100%;
 }
 
 .about-page {
