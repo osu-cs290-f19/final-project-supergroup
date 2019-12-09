@@ -9,6 +9,8 @@ a {
 }
 
 header {
+	position: fixed;
+	width: 100%;
 	height: 5em;
 	background-color: #000000;
 }
@@ -24,6 +26,7 @@ header {
 
 .site-title {
 	display: inline-block;
+	max-width: 25%;
 	vertical-align: top;
 }
 
@@ -37,7 +40,7 @@ header {
 	display: inline-block;
 	background-color: #000000;
 	color: #dc4405;
-	width: 60%;
+	width: 50%;
 	height: 100%;
 	vertical-align: top;
 	margin: auto;
@@ -45,22 +48,12 @@ header {
 
 #navbar div {
 	height: 100%;
-	width: 20%;
+	width: 24%;
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
 	line-height: 5em;
 }
-
-#navbar div {
-	height: 100%;
-	width: 20%;
-	display: inline-block;
-	vertical-align: top;
-	text-align: center;
-	line-height: 5em;
-}
-
 
 #navbar div:hover {
 	background-color: #dc4405;
@@ -89,6 +82,7 @@ header {
 	flex-direction: row;
 	align-items: center;
 	height: 50px;
+	width: 100%;
 }
 
 .search-bar {
@@ -96,6 +90,7 @@ header {
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 #search-bar-text {
@@ -104,28 +99,29 @@ header {
 }
 
 #search-button, #search-link {
-	display: inline-block;
-	width: 30%;
-	height: 30px;
-	line-height: 30px;
 	font-size: 1em;
 	text-decoration: none;
 	background-color: #000000;
 	color: #ffffff;
 	text-align: center;
-	vertical-align: top;
-	float: top;
+
+	margin: 5%;
+	padding: 5px;
+	cursor: pointer;
+	flex: 1 1 100%;
 }
 
 #search-button {
 	border: none;
-	margin-left: 10%;
 }
 
-#search-link {
-	float: right;
-	margin-right: 10%;
-
+.post-container {
+	position: relative;
+	top: 5em;
+	width: 80em;
+	min-width: 85%;
+	max-width: 30%;
+  float: right;
 }
 
 .browse-contents {
@@ -183,14 +179,16 @@ header {
 	box-shadow: 5px 5px 5px gray;
 }
 
-#search-button, #search-link {
-	width: 40%;
-	margin: 2% auto;
-	padding: 5px;
-	text-decoration: none;
-	background-color: #000000;
-	color: #ffffff;
-
+.full-search {
+	position: fixed;
+	top: 5em;
+	width: 10em;
+	min-width: 10%;
+	max-width: 30%;
+	height: 100%;
+	display: inline-block;
+	background-color: #737373;
+	padding: 2em;
 }
 
 .full-search span {
@@ -200,7 +198,7 @@ header {
 	font-weight: 600;
 }
 
-.post-title a {
+.user-post a {
 	color: black;
 }
 
@@ -211,12 +209,7 @@ header {
 	margin: 1em 0;
 }
 
-.search-input-div {
-	margin: 0 5px;
-	flex: 1 1 100%;
-}
-
-.search-input {
+.search-container input {
 	width: 100%;
 }
 
@@ -227,4 +220,44 @@ header {
 
 .about-page #title {
 	text-align: center;
+}
+
+.add-post-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+.add-post-body {
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 5px;
+}
+
+.add-post-footer {
+	width: 25%;
+}
+
+#add-post-button {
+	width: 100%;
+	margin: 2% auto;
+	padding: 5px;
+	text-decoration: none;
+	background-color: #000000;
+	color: #ffffff;
+}
+
+.add-post-input {
+	margin: 5px;
+	flex: 1 1 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.add-post-text {
+	width: 75%;
 }
