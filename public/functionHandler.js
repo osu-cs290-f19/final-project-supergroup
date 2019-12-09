@@ -138,27 +138,9 @@ function updatePosts(event){
     year: document.getElementById("year-input").value
     }
     create_posts(new_filters);
-//     var original_posts = contentArray;
-//     for (var i =original_posts.length-1; i>=0;i--){ 
-//         var individual_post = { //gather post data
-//             professor: original_posts[i].getAttribute('data-professor'),
-//             class: original_posts[i].getAttribute('data-class'),
-//             term: original_posts[i].getAttribute('data-term'),
-//             title: original_posts[i].getElementsByClassName('post-title')[0].textContent,
-//             year: original_posts[i].getAttribute('data-year'),
-//             body: original_posts[i].getElementsByClassName('post-body-contents')[0].textContent,
-//             resource: original_posts[i].getElementsByClassName('post-resource')[0].textContent
-//         }
-//         if (!checkFilters(individual_post,new_filters)){
-//             console.log("failed test");
-//         }else{
-//             addNewPost(individual_post.title,individual_post.class,individual_post.term,individual_post.professor,individual_post.year,individual_post.body,individual_post.resource)
-//         }
-//     }
 }
 
 function addNewPost(postNum, postTitle, postClass, postTerm, postYear, postProfessor, postDate, postBody, postResource) {
-
 
     var postData = {
         postNum: postNum,
@@ -181,7 +163,7 @@ function addNewPost(postNum, postTitle, postClass, postTerm, postYear, postProfe
         if (event.target.status !== 200) {
             alert("Something went wrong adding your post.");
         } else {
-            location.assign(window.location.origin + "/browse");
+            location.replace(window.location.origin + "/browse");
         }
     });
     request.send(requestData);
@@ -215,12 +197,13 @@ function addPostClick() {
 window.addEventListener('DOMContentLoaded', function () {
     var updateButton = document.getElementById('search-button');
     if (updateButton) {
-        updateButton.addEventListener('click',updatePosts);
+        updateButton.addEventListener('click', updatePosts);
     }
     
     var addPostButton = document.getElementById("add-post-button");
     if (addPostButton) {
         addPostButton.addEventListener('click', addPostClick);
     }
+
     grabData();
 });
