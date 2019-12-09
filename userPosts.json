@@ -1,6 +1,28 @@
 [
   {
-    "postNum": "0",
+    "postNum": "3",
+    "title": "Documentation for express.js",
+    "class": "Web Development",
+    "term": "Fall",
+    "year": "2019",
+    "professor": "Rob Hess",
+    "uploadDate": "12/9/2019",
+    "body": "Documentation page for the express.js node package. Very useful!",
+    "resource": "https://expressjs.com/en/5x/api.html"
+  },
+  {
+    "postNum": "2",
+    "title": "New Study Materials",
+    "class": "CS 161",
+    "term": "Fall",
+    "year": "2018",
+    "professor": "Parham-Mocello",
+    "uploadDate": "12/9/2019",
+    "body": "Good review materials. Highly recommended!",
+    "resource": "www.google.com"
+  },
+  {
+    "postNum": "1",
     "title": "Assignment 5",
     "class": "Web Development",
     "term": "Fall",
@@ -8,6 +30,17 @@
     "uploadDate": "11/30/2019",
     "professor": "Rob Hess",
     "body": "This is a test of the feature",
+    "resource": "/"
+  },
+  {
+    "postNum": "0",
+    "title": "Assignment 1",
+    "class": "Data Structures",
+    "term": "Fall",
+    "year": "2019",
+    "uploadDate": "11/20/2019",
+    "professor": "Rob Hess",
+    "body": "This is another test of the feature",
     "resource": "/"
   }
 ]
