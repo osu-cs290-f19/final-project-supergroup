@@ -10,6 +10,7 @@ a {
 
 header {
 	position: fixed;
+	overflow: hidden;
 	width: 100%;
 	height: 5em;
 	background-color: #000000;
@@ -17,7 +18,7 @@ header {
 }
 
 .header-image-container {
-	display: inline-block;	
+	display: inline-block;
 	height: 100%;
 }
 
@@ -137,6 +138,7 @@ header {
 
 .post-container {
 	width: 100%;
+	padding-left: 20em;
 }
 
 .post-contents {
@@ -169,11 +171,11 @@ header {
 }
 
 .full-search {
+	position: fixed;
+	z-index: 1;
 	top: 5em;
-	width: 20%;
-	min-width: 10%;
-	max-width: 30%;
-	height: 30%;
+	width: 18em;
+	height: 40%;
 	display: inline-block;
 	background-color: #9c9c9c;
 	padding: 1em;
